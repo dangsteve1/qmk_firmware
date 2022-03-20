@@ -23,6 +23,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+                /* Base Layout
+                *
+                * ,-------------------------------------------------------------------------------------------------------------.
+                * | Esc  ||  F1  |  F2  |  F3  |  F4  ||  F5  |  F6  |  F7  |  F8  ||  F9  | F10  | F11  | F12  || Home || Mute |
+                * |=============================================================================================================|
+                * |  ` ~ |  1 ! |  2 @ |  3 # |  4 $ |  5 % |  6 ^ |  7 & |  8 * |  9 ( |  0 ) |  - _ |  = + |  Backspc || Del  |
+                * |------+------+------+------+------+------+------+------+------+------+------+------+------+----------++------|
+                * |   Tab   |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | [ }  | ] }  |  \ |  || PgUp |
+                * |---------+------+------+------+------+------+------+------+------+------+------+------+------+-------++------|
+                * |  Capslock  |  A   |  S   |  D   |  F  |  G   |  H   |  J   |  K   |  L   | ; :  | ' "  |    Enter   || PgDn |
+                * |------------+------+------+------+-----+------+------+------+------+------+------+------|----+========+------|
+                * |    LShift    |  Z   |  X   |  C   |  V   |  B   |  N   |  M   | , <  | . >  | / ?  | RShift ||  Up  || End  |
+                * |--------------+------+------+------+------+------+------+------+------+------+------+--+=====++------++======|
+                * |  Ctrl  |   Win  |  LAlt  |               Space                  | RAlt |  Fn  | Ctrl || Left | Down | Rght |
+                * `------------------------------------------------------------------------------------------------------------'
+                */
+
+
 //      ESC      F1       F2       F3       F4       F5       F6       F7       F8       F9       F10      F11      F12	     Del               Rotary(Play/Pause)
 //      ~        1        2        3        4        5        6        7        8        9        0         -       (=)	     BackSpc           Home
 //      Tab      Q        W        E        R        T        Y        U        I        O        P        [        ]        \                 PgUp
@@ -48,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,          KC_PGUP,
         KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           KC_PGDN,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
-        KC_LCTL, KC_LALT, KC_LGUI,                            KC_SPC,                             KC_LGUI, MO(1),   KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT
+        KC_LCTL, KC_LALT, KC_LGUI,                            KC_SPC,                             MO(1),   MO(2),   MO(3),   KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
     [1] = LAYOUT(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_EJCT,          _______,
+        KC_PWR,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_EJCT,          KC_MUTE,
         _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_PSCR,
         _______, _______, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
         _______, _______, RGB_VAD, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
@@ -60,17 +78,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
+    [2] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______,
+        _______, _______, _______,                            _______,                            _______, _______, _______,  _______, _______, _______
+    ),
+
+    [3] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______,
+        _______, _______, _______,                            _______,                            _______, _______, _______, MO(4),   _______, _______
+    ),
 
 };
 // clang-format on
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    // if (clockwise) {
-    //   tap_code(KC_VOLU);
-    // } else {
-    //   tap_code(KC_VOLD);
-    // }
     if (index == 0) {
     switch(biton32(layer_state)){
         case 1:
@@ -78,6 +108,20 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 tap_code16(KC_BRIU);
             } else{
                 tap_code16(KC_BRID);
+            }
+            break;
+        case 2:
+            if (clockwise){
+                tap_code16(RGB_MOD);
+            } else{
+                tap_code16(RGB_RMOD);
+            }
+            break;
+        case 3:
+            if (clockwise){
+                tap_code16(KC_PGDN);
+            } else{
+                tap_code16(KC_PGUP);
             }
             break;
         default:
@@ -300,3 +344,24 @@ static void set_rgb_caps_leds() {
 }
 
 #endif // RGB_MATRIX_ENABLE
+
+
+const uint16_t PROGMEM combo_rgb_hue[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_quit[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_exit[] = {KC_Q, KC_TAB, COMBO_END};
+const uint16_t PROGMEM combo_pgup[] = {KC_LEFT, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_pgdn[] = {KC_RGHT, KC_DOWN, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_render[] = {KC_SLSH, KC_R, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(combo_rgb_hue, RGB_HUI),
+    COMBO(combo_quit, LGUI(KC_W)),
+    COMBO(combo_exit, LGUI(KC_Q)),
+    COMBO(combo_pgup, KC_PGUP),
+    COMBO(combo_pgdn, KC_PGDN),
+    COMBO(combo_copy, LGUI(KC_C)),
+    COMBO(combo_paste, LGUI(KC_V)),
+    COMBO(combo_render, LALT(KC_R)),
+};
+
