@@ -106,16 +106,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     switch(biton32(layer_state)){
         case 1:
             if (clockwise){
-                tap_code16(KC_BRIU);
+                tap_code16(KC_MFFD);
             } else{
-                tap_code16(KC_BRID);
+                tap_code16(KC_MRWD);
             }
             break;
         case 2:
             if (clockwise){
-                tap_code16(RGB_MOD);
+                tap_code16(KC_BRIU);
             } else{
-                tap_code16(RGB_RMOD);
+                tap_code16(KC_BRID);
             }
             break;
         case 3:
