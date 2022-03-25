@@ -353,8 +353,11 @@ const uint16_t PROGMEM combo_exit[] = {KC_Q, KC_TAB, COMBO_END};
 const uint16_t PROGMEM combo_pgup[] = {KC_LEFT, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_pgdn[] = {KC_RGHT, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_cut[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM combo_render[] = {KC_SLSH, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_render[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_cmd_home[] = {KC_LCTL, KC_HOME, COMBO_END};
+const uint16_t PROGMEM combo_cmd_end[] = {KC_LCTL, KC_END, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_rgb_hue, RGB_HUI),
     COMBO(combo_quit, LGUI(KC_W)),
@@ -362,7 +365,9 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_pgup, KC_PGUP),
     COMBO(combo_pgdn, KC_PGDN),
     COMBO(combo_copy, LGUI(KC_C)),
+    COMBO(combo_cut, LGUI(KC_X)),
     COMBO(combo_paste, LGUI(KC_V)),
     COMBO(combo_render, LALT(KC_R)),
+    COMBO(combo_cmd_home, LGUI(KC_HOME)),
+    COMBO(combo_cmd_end, LGUI(KC_END)),
 };
-
