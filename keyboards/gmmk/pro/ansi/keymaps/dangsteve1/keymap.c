@@ -358,6 +358,7 @@ const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_render[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM combo_cmd_home[] = {KC_LCTL, KC_HOME, COMBO_END};
 const uint16_t PROGMEM combo_cmd_end[] = {KC_LCTL, KC_END, COMBO_END};
+const uint16_t PROGMEM combo_rshft_entr[] = {KC_RSFT, KC_ENT, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_rgb_hue, RGB_HUI),
     COMBO(combo_quit, LGUI(KC_W)),
@@ -370,4 +371,5 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_render, LALT(KC_R)),
     COMBO(combo_cmd_home, LGUI(KC_HOME)),
     COMBO(combo_cmd_end, LGUI(KC_END)),
+    COMBO(combo_rshft_entr, LGUI(KC_ENT)),
 };
