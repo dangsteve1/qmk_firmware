@@ -72,9 +72,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT(
         KC_PWR,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_EJCT,          KC_MUTE,
-        _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_PSCR,
-        _______, _______, RGB_VAI, _______, _______, _______, _______, _______, KC_UP,   _______, _______, _______, _______, RESET,            _______,
-        _______, _______, RGB_VAD, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,          _______,          _______,
+        _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL,          KC_PSCR,
+        _______, _______, KC_UP,   _______, _______, _______, _______, _______, KC_UP,   _______, _______, _______, _______, RESET,            _______,
+        _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,          _______,          _______,
         _______,          _______, RGB_HUI, _______, _______, _______, NK_TOGG, _______, _______, _______, _______,          _______, RGB_MOD, _______,
         _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
@@ -82,17 +82,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______, _______, KC_UP,   _______, _______, _______, _______, _______, KC_UP,   _______, _______, _______, _______, RESET,            _______,
+        KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,          _______,          _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______,
-        _______, _______, _______,                            _______,                            _______, _______, _______,  _______, _______, _______
+        _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______
     ),
 
     [3] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______, _______, KC_UP,   _______, _______, _______, _______, _______, KC_UP,   _______, _______, _______, _______, RESET,            _______,
+        KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,          _______,          _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______,
         _______, _______, _______,                            _______,                            _______, _______, _______, MO(4),   _______, _______
     ),
@@ -346,23 +346,43 @@ static void set_rgb_caps_leds() {
 
 #endif // RGB_MATRIX_ENABLE
 
+enum combo_events {
+  SQL_SELECT,
+  SQL_COUNT,
+  SQL_GROUP_HAVING,
+  SQL_CTE,
+  DEV_SCHEMA,
+  DBT_RUN,
+  SAVE_ALL,
+  TERMINAL_SWITCH,
+  COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM combo_rgb_hue[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM combo_close_wind[] = {KC_Q, KC_W, COMBO_END}; // close window
-const uint16_t PROGMEM combo_quit[] = {KC_Q, KC_TAB, COMBO_END}; // quit program
-const uint16_t PROGMEM combo_pgup[] = {KC_LEFT, KC_UP, COMBO_END}; // pg up
-const uint16_t PROGMEM combo_pgdn[] = {KC_RGHT, KC_DOWN, COMBO_END}; // pg down
-const uint16_t PROGMEM combo_copy[] = {KC_D, KC_F, COMBO_END}; // copy
-const uint16_t PROGMEM combo_cut[] = {KC_X, KC_C, COMBO_END}; // cut
-const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END}; // paste
-const uint16_t PROGMEM combo_render[] = {KC_R, KC_T, COMBO_END}; // render jinja in dbt
-const uint16_t PROGMEM combo_cmd_home[] = {KC_LCTL, KC_HOME, COMBO_END}; // top of page
-const uint16_t PROGMEM combo_cmd_end[] = {KC_LCTL, KC_END, COMBO_END}; // end of page
-const uint16_t PROGMEM combo_rshft_entr[] = {KC_RSFT, KC_ENT, COMBO_END}; // run queries
-combo_t key_combos[COMBO_COUNT] = {
+const uint16_t PROGMEM combo_quit[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_exit[] = {KC_Q, KC_TAB, COMBO_END};
+const uint16_t PROGMEM combo_pgup[] = {KC_LEFT, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_pgdn[] = {KC_RGHT, KC_DOWN, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_cut[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_render[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_cmd_home[] = {KC_LCTL, KC_HOME, COMBO_END};
+const uint16_t PROGMEM combo_cmd_end[] = {KC_LCTL, KC_END, COMBO_END};
+const uint16_t PROGMEM combo_rshft_entr[] = {KC_RSFT, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_lctrl_entr[] = {KC_LCTL, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_mo1_entr[] = {MO(1), KC_ENT, COMBO_END};
+const uint16_t PROGMEM sql_select_all[] = {KC_S, KC_8, COMBO_END};
+const uint16_t PROGMEM sql_count_all[] = {KC_C, KC_8, COMBO_END};
+const uint16_t PROGMEM group_having_gtr_one[] = {KC_H, KC_V, COMBO_END};
+const uint16_t PROGMEM cte_as[] = {KC_A, KC_0, COMBO_END};
+const uint16_t PROGMEM type_dev_schema[] = {KC_S, KC_MINS, COMBO_END};
+
+combo_t key_combos[] = {
     COMBO(combo_rgb_hue, RGB_HUI),
-    COMBO(combo_close_wind, LGUI(KC_W)),
-    COMBO(combo_quit, LGUI(KC_Q)),
+    COMBO(combo_quit, LGUI(KC_W)),
+    COMBO(combo_exit, LGUI(KC_Q)),
     COMBO(combo_pgup, KC_PGUP),
     COMBO(combo_pgdn, KC_PGDN),
     COMBO(combo_copy, LGUI(KC_C)),
@@ -372,4 +392,57 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_cmd_home, LGUI(KC_HOME)),
     COMBO(combo_cmd_end, LGUI(KC_END)),
     COMBO(combo_rshft_entr, LGUI(KC_ENT)),
+    COMBO(combo_lctrl_entr, LGUI(KC_ENT)),
+    COMBO(combo_mo1_entr, LGUI(KC_ENT)),
+  [SQL_SELECT] = COMBO_ACTION(sql_select_all),
+  [SQL_COUNT] = COMBO_ACTION(sql_count_all),
+  [SQL_GROUP_HAVING] = COMBO_ACTION(group_having_gtr_one),
+  [SQL_CTE] = COMBO_ACTION(cte_as),
+  [DEV_SCHEMA] = COMBO_ACTION(type_dev_schema),
 };
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case SQL_SELECT:
+      if (pressed) {
+        SEND_STRING("select *");
+        tap_code16(KC_ENT);
+        SEND_STRING("from ");
+      }
+      break;
+    case SQL_COUNT:
+      if (pressed) {
+        SEND_STRING("count(*)");
+      }
+      break;
+    case SQL_GROUP_HAVING:
+      if (pressed) {
+        SEND_STRING("group by 1");
+        tap_code16(KC_ENT);
+        SEND_STRING("having count(*) > 1");
+      }
+      break;
+    case SQL_CTE:
+      if (pressed) {
+        SEND_STRING(" as (");
+        tap_code16(KC_ENT);
+        tap_code16(KC_ENT);
+        tap_code16(KC_ENT);
+        tap_code16(KC_RGHT);
+        SEND_STRING(",");
+        tap_code16(KC_UP);
+        tap_code16(KC_UP);
+        tap_code16(KC_TAB);
+        SEND_STRING("select *");
+        tap_code16(KC_ENT);
+        tap_code16(KC_TAB);
+        SEND_STRING("from ");
+      }
+      break;
+    case DEV_SCHEMA:
+      if (pressed) {
+        SEND_STRING("analytics_dw_dev.dbt_sdang_");
+      }
+      break;
+  }
+}

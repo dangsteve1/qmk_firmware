@@ -21,6 +21,3 @@
     #define RGB_DISABLE_TIMEOUT 60000     // 1 minutes (1 * 60 * 1000ms)
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
 #endif
-
-
-#define COMBO_COUNT 12
